@@ -1,0 +1,8 @@
+<head>
+  <head>
+    <title><%= $filename %></title>
+  </head>
+  <body>
+    <img src="data:image/<%= $image_type %>;base64,<%= $image  %>">
+  </body>
+</html>

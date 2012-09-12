@@ -1,0 +1,27 @@
+% my %repos_contents = $github->fetch_repos_contents($user, $repos);
+
+<html>
+  <head>
+    <title><%= $user %>/<%= $repos %></title>
+  </head>
+  <body>
+    <h1><%= $user %>/<%= $repos %></h1>
+    <ul>
+      % foreach my $filepath (keys %repos_contents) {
+          <li>
+          % my $content = $repos_contents{$filepath};
+          % my $type    = $content->{'type'};
+          % my $name    = $content->{'name'};
+          % $repos =~ s#/.*$##; # Removing non repository-name.
+          % if ($type eq 'file') {
+              % $repos    =~ s#/##;
+              % $filepath =~ s#^/##;
+              <%= link_to "/file/$user/$repos/$filepath" => begin %><%= "$name" %><% end %>
+          % } elsif ($type eq 'dir') {
+              <%= link_to "/repos/$user/$repos/$filepath" => begin %><%= "$name/" %><% end %>
+          % }
+          </li>
+      % }
+    </ul>
+  </body>
+</html>

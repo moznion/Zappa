@@ -1,0 +1,18 @@
+% my %repos_list = $github->fetch_user_repos($user);
+
+<html>
+  <head>
+    <title><%= $user %> Repositoy List</title>
+  </head>
+  <body>
+    <h1><%= $user %> Repositoy List</h1>
+    <ul>
+      % foreach my $id (reverse sort keys %repos_list) {
+        % my $repos_name = $repos_list{$id}->{'name'};
+        <li>
+        <%= link_to $repos_name => "$user/$repos_name"%>;
+        </li>
+      % }
+    </ul>
+  </body>
+</html>
