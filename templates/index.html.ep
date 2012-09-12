@@ -4,6 +4,7 @@
   </head>
   <body>
     <h1>Frank Zappa is the greatest guitarist</h1>
-    <%= link_to "/repos/moznion/Zappa" => begin %><img src='/images/zappa/zappa.jpg'><% end %>
+    <%= link_to "/repos/moznion/Zappa" => begin %><img src='/images/zappa/zappa.jpg'><% end %><br>
+    <%= link_to "/repos/moznion/Zappa" => begin %>ZAPPA<% end %><br>
   </body>
 </html>
