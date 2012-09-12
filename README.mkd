@@ -9,13 +9,15 @@
 
 #Usage
     $ perl Zappa.pl daemon
-    -> Access to 'localhost:3000' by your favorite browser -> Rock'n'Roll !!!
+    -> Access to 'localhost:3000' by your favorite browser
+    -> Rock'n'Roll!!!
 
 #Notice
 Mojolicious のpublic ディレクトリ以下に存在する(無ければ作って下さい)
 * images/
-ディレクトリに"zappa" という名前のシンボリックリンクを
-プロジェクトの同名ディレクトリに対して貼らないと
-上手く動きません。
+
+ディレクトリに"zappa" という名前のシンボリックリンクをプロジェクトの同名ディレクトリに対して貼らないと上手く動きません。
+
 e.g.)
+
     ~/to/Mojolicious/path/Mojolicious/public/images$ ln -s to/zappa/path/Zappa/images zappa
