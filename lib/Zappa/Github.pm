@@ -38,6 +38,7 @@ sub get {
   }
 }
 
+# Repos Data
 sub fetch_repos_contents {
   my ($self, $user, $repos) = @_;
 
@@ -59,6 +60,7 @@ sub fetch_repos_contents {
   return %directory;
 }
 
+# User Data
 sub fetch_user_repos {
   my ($self, $user) = @_;
 
@@ -78,6 +80,7 @@ sub fetch_user_repos {
   return %repositories;
 }
 
+# File Data
 sub fetch_file_contents {
   my ($self, $user_name, $repos_name, $file_path) = @_;
   my $response = $self->get("repos/$user_name/$repos_name/contents/$file_path");
