@@ -48,16 +48,9 @@ sub fetch_repos_contents {
   } else {
     $response = $self->get(sprintf "/repos/%s/%s/%s", $user, $repos, 'contents');
   }
-  my %directory;
-  foreach my $content (@$response) {
-    my %content_info;
-    $content_info{'name'}     = $content->{'name'};
-    $content_info{'type'}     = $content->{'type'};
-    $content_info{'location'} = $content->{'_links'}->{'self'};
-    $directory{$content->{'path'}} = \%content_info;
-  }
 
-  return %directory;
+  my @sorted_repos_contents = sort { $a->{'type'} cmp $b->{'type'} } @$response;
+  return @sorted_repos_contents;
 }
 
 # User Data
