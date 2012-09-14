@@ -65,24 +65,14 @@ sub fetch_user_repos {
   my ($self, $user) = @_;
 
   my $response = $self->get(sprintf "/users/%s/repos", $user);
-  my %repositories;
-  foreach my $repos (@$response) {
-    my %repos_info;
-    $repos_info{'name'}        = $repos->{'name'};
-    $repos_info{'full_name'}   = $repos->{'full_name'};
-    $repos_info{'description'} = $repos->{'description'};
-    $repos_info{'private'}     = $repos->{'private'};
-    $repos_info{'clone_url'}   = $repos->{'clone_url'};
-    $repos_info{'fork'}        = $repos->{'fork'};
-    $repositories{$repos->{'id'}} = \%repos_info;
-  }
-
-  return %repositories;
+  my @sorted_repositories = reverse sort { $a->{'id'} <=> $b->{'id'} } @$response;
+  return @sorted_repositories;
 }
 
 # File Data
 sub fetch_file_contents {
   my ($self, $user_name, $repos_name, $file_path) = @_;
+
   my $response = $self->get("repos/$user_name/$repos_name/contents/$file_path");
   return %$response;
 }
