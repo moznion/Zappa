@@ -6,6 +6,7 @@
 * Carp
 * Try::Tiny
 * Class::Load
+* IO::Socket::SSL
 
 #Usage
     $ perl Zappa.pl daemon
