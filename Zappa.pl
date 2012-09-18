@@ -30,11 +30,19 @@ get '/repos/:user/*repos' => sub {
   $self->render('repos_contents');
 };
 
+# LOG
 get '/repos_log/:user/:repos' => sub {
   my $self = shift;
   $self->stash(github => $github);
 
   $self->render('repos_log');
+};
+
+get '/repos_log/:user/:repos/:sha' => sub {
+  my $self = shift;
+  $self->stash(github => $github);
+
+  $self->render('detailed_commit_log');
 };
 
 # FILE

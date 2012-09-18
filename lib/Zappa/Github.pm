@@ -60,6 +60,13 @@ sub fetch_repos_log {
   return @$response;
 }
 
+sub fetch_commits_log {
+  my ($self, $user, $repos, $sha) = @_;
+
+  my $response = $self->get("/repos/$user/$repos/commits/$sha");
+  return %$response;
+}
+
 # User Data
 sub fetch_user_repos {
   my ($self, $user) = @_;

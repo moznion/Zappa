@@ -1,0 +1,16 @@
+% my %commit_log = $github->fetch_commits_log($user, $repos, $sha);
+
+<html>
+  <head>
+    <title>Commit Log</title>
+  </head>
+  <body>
+    <h1>Commit Log</h1>
+    <ul>
+      <li>
+        %#TODO
+        <%= $commit_log{'sha'} %>
+      </li>
+    </ul>
+  </body>
+</html>

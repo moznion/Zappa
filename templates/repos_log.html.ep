@@ -8,13 +8,11 @@
     <h1><%= $user %> Repositoy Log</h1>
     <ul>
       % foreach my $log (@repos_logs) {
-        % foreach (keys %$log) {
-        %   print "$_\n";
-        % }
         % my $commit_log  = $log->{'commit'}->{'message'};
         % my $author_name = $log->{'author'}->{'login'};
+        % my $log_title   = "$commit_log / $author_name";
         <li>
-          <%= $commit_log %> / <%= $author_name %>
+          <%= link_to $log_title => "$repos/$log->{'sha'}" %>
         </li>
       % }
     </ul>
