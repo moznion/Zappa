@@ -53,6 +53,13 @@ sub fetch_repos_contents {
   return @sorted_repos_contents;
 }
 
+sub fetch_repos_log {
+  my ($self, $user, $repos) = @_;
+
+  my $response = $self->get("/repos/$user/$repos/commits");
+  return @$response;
+}
+
 # User Data
 sub fetch_user_repos {
   my ($self, $user) = @_;

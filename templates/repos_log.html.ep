@@ -1,0 +1,22 @@
+% my @repos_logs = $github->fetch_repos_log($user, $repos);
+
+<html>
+  <head>
+    <title><%= $user %> Repositoy Log</title>
+  </head>
+  <body>
+    <h1><%= $user %> Repositoy Log</h1>
+    <ul>
+      % foreach my $log (@repos_logs) {
+        % foreach (keys %$log) {
+        %   print "$_\n";
+        % }
+        % my $commit_log  = $log->{'commit'}->{'message'};
+        % my $author_name = $log->{'author'}->{'login'};
+        <li>
+          <%= $commit_log %> / <%= $author_name %>
+        </li>
+      % }
+    </ul>
+  </body>
+</html>

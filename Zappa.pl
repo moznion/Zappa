@@ -30,6 +30,12 @@ get '/repos/:user/*repos' => sub {
   $self->render('repos_contents');
 };
 
+get '/repos_log/:user/:repos' => sub {
+  my $self = shift;
+  $self->stash(github => $github);
+
+  $self->render('repos_log');
+};
 
 # FILE
 get '/file/:user/:repos/*path' => sub {
